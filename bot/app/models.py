@@ -1,8 +1,17 @@
 from django.db import models
 
+DEFAULT_CHAR_FIELD_LEN = 256
+
+
+class CreateAtModel(models.Model):
+    create_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
 
 class DialogState(models.Model):
-    user = models.CharField(max_length=256)
+    user = models.CharField(max_length=DEFAULT_CHAR_FIELD_LEN)
     current_question = models.ForeignKey(
         'Question',
         on_delete=models.SET_NULL,
@@ -37,3 +46,21 @@ class Question(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class ChatHistory(CreateAtModel):
+    user = models.CharField(max_length=DEFAULT_CHAR_FIELD_LEN)
+    message = models.TextField()
+    answer = models.TextField()
+
+    class Meta:
+        ordering = ('-create_at',)
+
+
+class BaseStatistic(CreateAtModel):
+    ip_addr = models.GenericIPAddressField()
+    browser = models.CharField(max_length=DEFAULT_CHAR_FIELD_LEN)
+    request_params = models.TextField()
+
+    class Meta:
+        ordering = ('-create_at',)

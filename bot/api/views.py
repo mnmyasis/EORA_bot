@@ -7,13 +7,12 @@ from .serializers import MessageSerializer
 class MessageView(APIView):
 
     def post(self, request):
-        user_id = request.data.get('user_id')
-        message = request.data.get('message')
         serializer = MessageSerializer(data=request.data)
         serializer.is_valid()
         question = serializer.save()
+        context = {}
         if question:
-            text = question.text
+            context['text'] = question.text
         else:
-            text = None
-        return Response(text)
+            context['text'] = None
+        return Response(context)
