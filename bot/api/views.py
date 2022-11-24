@@ -11,4 +11,9 @@ class MessageView(APIView):
         message = request.data.get('message')
         serializer = MessageSerializer(data=request.data)
         serializer.is_valid()
-        return Response('foo')
+        question = serializer.save()
+        if question:
+            text = question.text
+        else:
+            text = None
+        return Response(text)
