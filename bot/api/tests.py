@@ -110,3 +110,7 @@ class MessageViewTest(TestCase):
                                     content_type=self.CONTENT_TYPE,
                                     **self.HEADERS)
         self.assertEqual(response.status_code, HTTPStatus.BAD_REQUEST)
+
+    def test_register_message(self):
+        response = self.request_post(self.USER_ID, '/StArT')
+        self.assertEqual(response.data[self.RESPONSE_KEY], self.QUESTION_START)
