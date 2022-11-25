@@ -1,0 +1,62 @@
+[
+  {
+    "model": "app.question",
+    "pk": 1,
+    "fields": {
+      "text": "Привет! Я помогу отличить кота от хлеба! Объект перед тобой квадратный?",
+      "positive_answer": 3,
+      "negative_answer": 2,
+      "slug": "start"
+    }
+  },
+  {
+    "model": "app.question",
+    "pk": 2,
+    "fields": {
+      "text": "Это кот, а не хлеб! Не ешь его!",
+      "positive_answer": null,
+      "negative_answer": null,
+      "slug": null
+    }
+  },
+  {
+    "model": "app.question",
+    "pk": 3,
+    "fields": {
+      "text": "У него есть уши?",
+      "positive_answer": 5,
+      "negative_answer": 4,
+      "slug": null
+    }
+  },
+  {
+    "model": "app.question",
+    "pk": 4,
+    "fields": {
+      "text": "Это хлеб, а не кот! Ешь его!",
+      "positive_answer": null,
+      "negative_answer": null,
+      "slug": null
+    }
+  },
+  {
+    "model": "app.question",
+    "pk": 5,
+    "fields": {
+      "text": "Это кот, а не хлеб! Не ешь его!",
+      "positive_answer": null,
+      "negative_answer": null,
+      "slug": null
+    }
+  },
+  {
+    "model": "app.question",
+    "pk": 6,
+    "fields": {
+      "text": "Я не понимаю, пожалуйста сформулируйте ответ по другому!",
+      "positive_answer": null,
+      "negative_answer": null,
+      "slug": "unknown"
+    }
+  }
+]
