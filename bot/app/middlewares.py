@@ -1,4 +1,5 @@
 import json
+from http import HTTPStatus
 
 from django.urls import reverse
 
@@ -14,7 +15,8 @@ def log_middleware(get_response):
         request_body = request.body
         response = get_response(request)
         if request.path == reverse('api:message_view'):
-            if request.method == 'POST':
+            if (request.method == 'POST' and
+                    HTTPStatus.OK == response.status_code):
                 body = json.loads(request_body)
                 ChatHistory.objects.create(
                     user=body.get('user_id'),

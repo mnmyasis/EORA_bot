@@ -4,11 +4,11 @@ from rest_framework import serializers
 
 from app.models import DialogState, Question
 
+POSITIVE_ANSWERS = ['конечно', 'ага', 'пожалуй', 'да']
+NEGATIVE_ANSWERS = ['нет', 'ноуп', 'найн']
+
 
 class MessageSerializer(serializers.Serializer):
-    POSITIVE_ANSWERS = ['конечно', 'ага', 'пожалуй', 'да']
-    NEGATIVE_ANSWERS = ['нет', 'конечно', 'ноуп', 'найн']
-
     UNKNOWN_SLUG = 'unknown'
 
     message = serializers.CharField()
@@ -26,9 +26,9 @@ class MessageSerializer(serializers.Serializer):
     ) -> Question:
         question = None
         if dialog_state and dialog_state.current_question:
-            if message in self.POSITIVE_ANSWERS:
+            if message in POSITIVE_ANSWERS:
                 question = dialog_state.current_question.positive_answer
-            elif message in self.NEGATIVE_ANSWERS:
+            elif message in NEGATIVE_ANSWERS:
                 question = dialog_state.current_question.negative_answer
         if not question:
             questions = Question.objects.filter(slug=message)
