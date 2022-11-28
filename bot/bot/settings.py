@@ -65,8 +65,8 @@ WSGI_APPLICATION = 'bot.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.getenv('DB_NAME', BASE_DIR / 'db.sqlite3'),
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv('POSTGRES_DB', BASE_DIR / 'db.sqlite3'),
         'USER': os.getenv('POSTGRES_USER', None),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', None),
         'HOST': os.getenv('DB_HOST', None),
