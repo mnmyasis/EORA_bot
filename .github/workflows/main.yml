@@ -19,7 +19,7 @@ jobs:
           pip install -r bot/requirements.txt
       - name: Django testing
         run: |
-          python -m bot/manage.py test
+          python bot/manage.py test
   build_and_push_to_docker_hub:
     name: Push image to Docker Hub
     runs-on: ubuntu-latest
