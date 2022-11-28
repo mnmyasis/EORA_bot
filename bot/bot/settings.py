@@ -11,7 +11,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,7 +63,11 @@ WSGI_APPLICATION = 'bot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.getenv('NAME', BASE_DIR / 'db.sqlite3'),
+        'NAME': os.getenv('DB_NAME', BASE_DIR / 'db.sqlite3'),
+        'USER': os.getenv('POSTGRES_USER', None),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', None),
+        'HOST': os.getenv('DB_HOST', None),
+        'PORT': os.getenv('DB_PORT', None)
     }
 }
 
