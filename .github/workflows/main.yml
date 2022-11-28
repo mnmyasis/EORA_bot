@@ -39,7 +39,7 @@ jobs:
         with:
           context: ./bot/.
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram-backend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/eora_bot:latest
   deploy:
     name: Deploy to server
     runs-on: ubuntu-latest
@@ -64,7 +64,7 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-            sudo docker pull mnmyasis/eora_bot:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/eora_bot:latest
             sudo docker-compose up -d 
             sudo docker-compose exec bot python manage.py migrate
             sudo docker-compose exec bot python manage.py collectstatic --no-input
