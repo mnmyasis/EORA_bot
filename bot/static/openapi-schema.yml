@@ -1,0 +1,57 @@
+openapi: 3.0.2
+info:
+  title: 'EORA Bot'
+  version: 'v1'
+  contact:
+    name: API Support
+    email: mnmyasis@gmail.com
+  description: |
+    Документация к API для работы с ботом.
+paths:
+  /api/message:
+    post:
+      operationId: message
+      description: 'Общение с ботом. Чтобы начать диалог необходимо отправить команду /start'
+      parameters:
+        - user_id: str
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+              example:
+                user_id: 'fsag$%365324'
+                message: '/start'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+          description: 'Удачное выполнение запроса'
+      tags:
+        - api
+
+
+components:
+  schemas:
+    Message:
+      type: object
+      properties:
+        user_id:
+          type: string
+          title: user_id пользователя
+        message:
+          type: string
+          title: текст публикации
+      required:
+        - user_id
+        - message
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          title: текст публикации
+      required:
+        - message

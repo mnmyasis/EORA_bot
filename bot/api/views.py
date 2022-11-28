@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import status
 
 from .serializers import MessageSerializer
 
@@ -15,4 +16,4 @@ class MessageView(APIView):
             context['text'] = question.text
         else:
             context['text'] = None
-        return Response(context)
+        return Response(context, status=status.HTTP_201_CREATED)
