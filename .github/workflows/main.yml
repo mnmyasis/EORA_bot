@@ -64,6 +64,7 @@ jobs:
             echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
             echo DJANGO_ADMIN_USERNAME=${{ secrets.DJANGO_ADMIN_USERNAME }} >> .env
             echo DJANGO_ADMIN_PASSWORD=${{ secrets.DJANGO_ADMIN_PASSWORD }} >> .env
+            echo APP_HOST=${{ secrets.APP_HOST }} >> .env
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/eora_bot:latest
             sudo docker-compose up -d 
             sudo docker-compose exec bot python manage.py migrate
