@@ -62,10 +62,14 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+            echo DJANGO_ADMIN_USERNAME=${{ secrets.DJANGO_ADMIN_USERNAME }} >> .env
+            echo DJANGO_ADMIN_PASSWORD=${{ secrets.DJANGO_ADMIN_PASSWORD }} >> .env
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/eora_bot:latest
             sudo docker-compose up -d 
             sudo docker-compose exec bot python manage.py migrate
             sudo docker-compose exec bot python manage.py collectstatic --no-input
+            sudo docker-compose exec bot python manage.py loaddata --app app --format json data/questions.json
+            sudo docker-compose exec bot python manage.py initial_user
   notification:
     name: Notification in telegram
     runs-on: ubuntu-latest
