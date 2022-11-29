@@ -100,7 +100,7 @@ TELEGRAM_TOKEN=token telegram bot
 ```
 ## Подготовка сервера
 
-- На сервере создать каталог "/home/<username>/eora_bot/"
+- На сервере создать каталог `/home/<username>/eora_bot/`
 ```
 mkdir /home/<username>/eora_bot
 ```
