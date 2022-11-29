@@ -1,6 +1,7 @@
 # EORA_bot
-Тестовое задание для EORA.
 ![workflow](https://github.com/mnmyasis/EORA_bot/actions/workflows/main.yml/badge.svg)
+
+Тестовое задание для EORA.
 
 Бот ассистент решает повседневную задачу большинства людей,
 распознования кота от хлеба.
