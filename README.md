@@ -177,3 +177,6 @@ https://eora-bot.hopto.org/redoc/
 - Postgresql
 - Docker
 - Github Actions
+
+# Авторы:
+- Мясищев Максим
