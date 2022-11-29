@@ -52,6 +52,15 @@ source venv/bin/activate
 cd bot
 pip install -r requirements.txt
 ```
+
+```
+python manage.py migrate
+python manage.py test
+python manage.py collectstatic --no-input
+python manage.py loaddata --app app --format json data/questions.json
+python manage.py initial_user
+python manage.py runserver
+```
 #### Windows(PowerShell)
 ```
 git clone git@github.com:mnmyasis/EORA_bot.git
@@ -63,12 +72,12 @@ pip install -r requirements.txt
 ```
 
 ```
-python manage.py migrate
-python manage.py test
-python manage.py collectstatic --no-input
-python manage.py loaddata --app app --format json data/questions.json
-python manage.py initial_user
-python manage.py runserver
+python.exe manage.py migrate
+python.exe manage.py test
+python.exe manage.py collectstatic --no-input
+python.exe manage.py loaddata --app app --format json data/questions.json
+python.exe manage.py initial_user
+python.exe manage.py runserver
 ```
 
 
